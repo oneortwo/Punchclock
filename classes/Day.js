@@ -1,22 +1,25 @@
 /*
  * Day class
  */
-function Day(name) {}
-
-Day.prototype.name = name; // For example 'Monday'
-Day.prototype.tasks = new Array(); // holds day instances
-
-Day.prototype.addTask = function(task){
-	this.tasks.push(task);
-}
-
-Day.prototype.removeTask = function(task){
-	var id = this.tasks.indexOf(task);
-	if(id < 0) {
-		console.debug('Task does not exist in tasklist');
-		return;
+function Day(name) {
+	this.name = name; // For example 'Monday'
+	_tasks = new Array(); // holds day instances
+	
+	this.addTask = function(task){
+		_tasks.push(task);
 	}
-	this.tasks.splice(id,1);
+	
+	this.removeTask = function(task){
+		var id = _tasks.indexOf(task);
+		if(id < 0) {
+			console.debug('Task does not exist in tasklist');
+			return;
+		}
+		_tasks.splice(id,1);
+	}
 }
+
+
+
 
 

@@ -19,7 +19,3 @@ function Week(number) {
 		_days.splice(id,1);
 	}
 }
-
-function() {
-	var w = new Week();
-}
