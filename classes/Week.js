@@ -19,3 +19,8 @@ function Week(number) {
 		_days.splice(id,1);
 	}
 }
+
+Week.prototype.toString = function()
+{
+	return "Week number " + this.number;
+}

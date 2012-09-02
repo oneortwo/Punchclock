@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+<title>Testing some classes...</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+<script type="text/javascript" src="../User.js"></script>
+<script type="text/javascript" src="../Task.js"></script>
+<script type="text/javascript" src="../Week.js"></script>
+<script type="text/javascript" src="../Day.js"></script>
+<script type="text/javascript">
+	$(init);
+
+	function init() {
+
+		var user = new User(5);
+		var week = new Week(32);
+		user.addWeek(week);
+		console.log("user id is %d", user.id);
+		console.log("week number is %d", week.number);
+		var week1 = user.getWeek(32);
+		user.removeWeek(32);
+		user.removeWeek(32);
+	}
+	
+</script>
+
+</head>
+<body>
+	
+
+	<div id="stuff"></div>
+
+</body>
+</html>
+
