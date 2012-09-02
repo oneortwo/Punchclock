@@ -16,12 +16,11 @@
 
 		var user = new User(5);
 		var week = new Week(32);
+		var week2 = new Week(31);		
 		user.addWeek(week);
 		console.log("user id is %d", user.id);
 		console.log("week number is %d", week.number);
-		var week1 = user.getWeek(32);
-		user.removeWeek(32);
-		user.removeWeek(32);
+		user.addWeek(week2);
 	}
 	
 </script>
@@ -30,7 +29,7 @@
 <body>
 	
 
-	<div id="stuff"></div>
+	<div id="tasks"></div>
 
 </body>
 </html>

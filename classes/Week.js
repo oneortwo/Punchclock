@@ -4,23 +4,39 @@
 function Week(number) {
 	this.number = number;
 	this.hours = 0.0;
-	_days = new Array();
+	var days = {};
 	
 	this.addDay = function(day) {
-		_days.push(day);
-	}
-	
-	this.removeDay = function(day) {
-		var id = _days.indexOf(day);
-		if(id < 0) {
-			console.debug('Day does not exist in daylist');
+		if(_days[_days.number] != undefined) {
+			console.debug('Day %d already exist in day map', day.number);
 			return;
 		}
-		_days.splice(id,1);
+		_days[day.number] = day;
+	}
+	
+	this.removeDay = function(number) {
+		console.log(_days[number]);
+		if(_days[number] == undefined) {
+			console.debug('Day %d does not exist in day map', number);
+			return;
+		}
+		_days[number] = undefined;
+	}
+	
+	this.getDay = function(number) {
+		if(_days[number] == null) {
+			console.debug('Day does not exist in day map');
+			return;
+		}
+		return _days[number];
 	}
 }
 
 Week.prototype.toString = function()
 {
 	return "Week number " + this.number;
+}
+
+function() {
+	var w = new Week();
 }

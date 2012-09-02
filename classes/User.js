@@ -4,27 +4,47 @@
 function User(id) {
 	this.id = id;
 	this.flex = 0.0;
-	var _weeks = {};
+	var weeks = {};
+	var tasks = {};
 	
-	this.addWeek = function(week) {
-		_weeks[week.number] = week;
+	this.addTask = function(task) {
+		
+		$('<div>' + task.name + '</div>')
+		.data('number', task.id)
+		.attr('id', task.id)
+		.appendTo('#tasks')
+		.draggable(
+			{
+				containment : '#content',
+				stack : '#cardPile div',
+				cursor : 'move',
+				revert : true
+			});
+		
+		tasks[task.id] = task;
 	}
 	
+	this.addWeek = function(week) {
+		if(weeks[week.number] != undefined) {
+			console.debug('Week %d already exist in week map', week.number);
+			return;
+		}
+		weeks[week.number] = week;
+	}
 	this.removeWeek = function(number) {
-		console.log(_weeks[number]);
-		if(_weeks[number] == undefined) {
+		console.log(weeks[number]);
+		if(weeks[number] == undefined) {
 			console.debug('Week %d does not exist in week map', number);
 			return;
 		}
-		_weeks[number] = undefined;
+		weeks[number] = undefined;
 	}
-	
 	this.getWeek = function(number) {
-		if(_weeks[number] == null) {
+		if(weeks[number] == null) {
 			console.debug('Week does not exist in week map');
 			return;
 		}
-		return _weeks[number];
+		return weeks[number];
 	}
 }
 
